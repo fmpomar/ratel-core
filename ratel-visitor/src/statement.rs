@@ -13,6 +13,8 @@ impl<'ast> Visitable<'ast> for StatementNode<'ast> {
         V: Visitor<'ast>,
     {
         use self::Statement::*;
+        
+        visitor.on_statement_node(&self);
 
         match self.item {
             Empty => { 

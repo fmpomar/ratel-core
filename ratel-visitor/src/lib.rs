@@ -44,7 +44,10 @@ pub trait Visitor<'ast> {
 
     /// A reference has been declared within the current scope
     fn on_reference_declaration(&mut self, ident: &Identifier<'ast>) {}
-
+    
+    // expression node
+    fn on_expression_node(&mut self, node: &'ast ExpressionNode<'ast>) {}
+    
     // expressions
     fn on_this_expression(&mut self, node: &'ast ExpressionNode<'ast>) {}
     fn on_identifier_expression(&mut self, item: &Identifier<'ast>, node: &'ast ExpressionNode<'ast>) {}
@@ -67,6 +70,9 @@ pub trait Visitor<'ast> {
     fn on_function_expression(&mut self, item: &FunctionExpression<'ast>, node: &'ast ExpressionNode<'ast>) {}
     fn on_class_expression(&mut self, item: &ClassExpression<'ast>, node: &'ast ExpressionNode<'ast>) {}
 
+    // statement node
+    fn on_statement_node(&mut self, node: &'ast StatementNode<'ast>) {}
+    
     // statements
     fn on_expression_statement(&mut self, item: &'ast ExpressionNode<'ast>, node: &'ast StatementNode<'ast>) {}
     fn on_declaration_statement(&mut self, item: &DeclarationStatement, node: &'ast StatementNode<'ast>) {}
